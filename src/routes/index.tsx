@@ -22,235 +22,88 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [showIntro, setShowIntro] = useState(true);
 
+  // Show ONLY the intro
+  if (showIntro) {
+    return (
+      <IntroOverlay
+        onFinish={() => setShowIntro(false)}
+      />
+    );
+  }
+
+  // Mount the website AFTER intro
   return (
     <div className="relative min-h-screen overflow-x-hidden font-sans text-foreground">
       <BackgroundFX />
 
-      {/* Intro */}
-      {showIntro && (
-        <IntroOverlay
-          onFinish={() => setShowIntro(false)}
-        />
-      )}
+      <Nav />
 
-      {/* Landing Page */}
-      <motion.div
-        animate={
-          showIntro
-            ? {
-                scale: 1.025,
-                filter: "blur(8px)",
-                opacity: 0.75,
-              }
-            : {
-                scale: 1,
-                filter: "blur(0px)",
-                opacity: 1,
-              }
-        }
+      <motion.main
+        initial={{
+          opacity: 0,
+          y: 20,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
         transition={{
-          duration: 1.4,
+          duration: 0.45,
           ease: [0.22, 1, 0.36, 1],
         }}
-        className="relative"
       >
-        {/* Dark cinematic overlay */}
-        <motion.div
-          animate={{
-            opacity: showIntro ? 0.45 : 0,
-          }}
-          transition={{
-            duration: 1.2,
-          }}
-          className="pointer-events-none absolute inset-0 z-20 bg-[#050816]"
-        />
+        <Hero />
 
-        <Nav />
+        <PillarsSection />
 
-        <main>
-          {/* Hero */}
-          <motion.div
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0.45,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1.2,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <Hero />
-          </motion.div>
+        <TechStackSection />
 
-          {/* Pillars */}
-          <motion.div
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1,
-              delay: 0.15,
-            }}
-          >
-            <PillarsSection />
-          </motion.div>
+        <DevOpsSection />
 
-          {/* Tech Stack */}
-          <motion.div
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1,
-              delay: 0.3,
-            }}
-          >
-            <TechStackSection />
-          </motion.div>
+        <SecuritySection />
 
-          {/* DevOps */}
-          <motion.div
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1,
-              delay: 0.45,
-            }}
-          >
-            <DevOpsSection />
-          </motion.div>
+        {/* CTA */}
+        <section className="relative mx-auto max-w-5xl px-6 pb-24">
+          <div className="glass-strong relative overflow-hidden rounded-3xl p-10 text-center">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-60"
+              style={{
+                background:
+                  "radial-gradient(ellipse at center, color-mix(in oklab, var(--cyan) 25%, transparent), transparent 60%)",
+              }}
+            />
 
-          {/* Security */}
-          <motion.div
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1,
-              delay: 0.6,
-            }}
-          >
-            <SecuritySection />
-          </motion.div>
+            <div className="relative">
+              <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                Ready to see production, in motion?
+              </h3>
 
-          {/* CTA */}
-          <motion.section
-            animate={
-              showIntro
-                ? {
-                    y: 40,
-                    opacity: 0,
-                  }
-                : {
-                    y: 0,
-                    opacity: 1,
-                  }
-            }
-            transition={{
-              duration: 1,
-              delay: 0.75,
-            }}
-            className="relative mx-auto max-w-5xl px-6 pb-24"
-          >
-            <div className="glass-strong relative overflow-hidden rounded-3xl p-10 text-center">
-              <div
-                className="pointer-events-none absolute inset-0 opacity-60"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at center, color-mix(in oklab, var(--cyan) 25%, transparent), transparent 60%)",
-                }}
-              />
+              <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+                Open the visualizer and trigger a checkout. Every hop, every
+                log, every span — animated.
+              </p>
 
-              <div className="relative">
-                <h3 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-                  Ready to see production, in motion?
-                </h3>
+              <div className="mt-6 flex justify-center gap-3">
+                <Link
+                  to="/visualizer"
+                  className="rounded-full bg-[color:var(--cyan)] px-5 py-2.5 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_36px_-6px_var(--cyan)] transition hover:brightness-110"
+                >
+                  Launch Visualizer
+                </Link>
 
-                <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-                  Open the visualizer and trigger a checkout. Every hop, every
-                  log, every span — animated.
-                </p>
-
-                <div className="mt-6 flex justify-center gap-3">
-                  <Link
-                    to="/visualizer"
-                    className="rounded-full bg-[color:var(--cyan)] px-5 py-2.5 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_36px_-6px_var(--cyan)] transition hover:brightness-110"
-                  >
-                    Launch Visualizer
-                  </Link>
-
-                  <a
-                    href="#stack"
-                    className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold hover:bg-white/10"
-                  >
-                    Explore the stack
-                  </a>
-                </div>
+                <a
+                  href="#stack"
+                  className="rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold hover:bg-white/10"
+                >
+                  Explore the stack
+                </a>
               </div>
             </div>
-          </motion.section>
-        </main>
+          </div>
+        </section>
 
-        <motion.div
-          animate={
-            showIntro
-              ? {
-                  opacity: 0,
-                  y: 30,
-                }
-              : {
-                  opacity: 1,
-                  y: 0,
-                }
-          }
-          transition={{
-            duration: 1,
-            delay: 0.9,
-          }}
-        >
-          <Footer />
-        </motion.div>
-      </motion.div>
+        <Footer />
+      </motion.main>
     </div>
   );
 }
