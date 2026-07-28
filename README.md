@@ -16,7 +16,7 @@ A production-grade cloud-native e-commerce platform built to visualize how moder
 
 ## 🌐 Live Demo
 
-🔗 https://flowcommerce.ai
+🔗 https://flowcommerce.rakeshsirvi.site
 
 ---
 
@@ -183,7 +183,7 @@ https://rakeshsirvi.site
 
 💼 LinkedIn
 
-https://www.linkedin.com/in/rakeshsirvi/
+https://www.linkedin.com/in/rakesh-sirvi-n-24232a3b3
 
 🐙 GitHub
 
