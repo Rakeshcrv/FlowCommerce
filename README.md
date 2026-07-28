@@ -1,252 +1,190 @@
 # 🚀 FlowCommerce.AI
 
-### Architecture • Observability • Infrastructure in Motion
+<p align="center">
 
-A production-grade cloud-native e-commerce platform built to demonstrate modern DevOps practices, distributed systems, CI/CD pipelines, observability, and real-time infrastructure visualization.
+Architecture • Observability • Infrastructure in Motion
 
-![React](https://img.shields.io/badge/React-19-blue)
-![TanStack](https://img.shields.io/badge/TanStack-Start-orange)
-![Docker](https://img.shields.io/badge/Docker-Compose-blue)
-![AWS](https://img.shields.io/badge/AWS-EC2-orange)
-![Postgres](https://img.shields.io/badge/PostgreSQL-16-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+</p>
 
-## Overview
+<p align="center">
 
-FlowCommerce.AI is a cloud-native e-commerce simulation platform designed to visualize how requests travel through a modern production infrastructure.
+A production-grade cloud-native e-commerce platform built to visualize how modern applications work behind every click.
 
-Instead of demonstrating a simple shopping application, FlowCommerce focuses on infrastructure, observability, and deployment pipelines.
-
-The project simulates an enterprise production environment where every request can be traced across multiple services including:
-
-- API Gateway
-- Authentication
-- Product Catalog
-- Cart Service
-- Order Service
-- Payment
-- Inventory
-- Shipping
-- Notification
-- PostgreSQL
-- Redis
-- Kafka
-
-## Why FlowCommerce?
-
-Modern applications are no longer monoliths.
-
-Understanding distributed systems, observability, deployment pipelines, and request tracing has become essential for every DevOps Engineer, Platform Engineer, and SRE.
-
-FlowCommerce demonstrates these concepts visually instead of only explaining them.
-
-## Features
-
-- Interactive Infrastructure Visualizer
-- Production Traffic Simulation
-- Distributed Request Flow
-- Kubernetes Architecture Simulation
-- Live Infrastructure Metrics
-- Deployment Timeline
-- API Gateway Simulation
-- Service Dependency Graph
-- Dockerized Architecture
-- CI/CD Ready
-- Responsive UI
-- Modern SaaS Landing Page
-
-## Screenshots
-
-### Landing Page
-
-<img src="./docs/images/landing.png"/>
+</p>
 
 ---
 
-### Infrastructure Visualizer
+## 🌐 Live Demo
 
-<img src="./docs/images/visualizer.png"/>
+🔗 https://flowcommerce.ai
 
 ---
 
-### Request Flow
+## ⚡ Tech Stack
 
-<img src="./docs/images/request-flow.png"/>
+<div align="center">
 
-## Architecture
+<img src="https://skillicons.dev/icons?i=react,typescript,nodejs,express,postgres,docker,aws,nginx,git,github,vscode" />
 
-```mermaid
-graph LR
+<br/>
 
-User
+<img src="https://img.shields.io/badge/TanStack-Start-orange?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Framer-Motion-black?style=for-the-badge" />
+<img src="https://img.shields.io/badge/TailwindCSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white" />
+<img src="https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
 
-↓
+</div>
 
-React Frontend
+---
 
-↓
+## 💡 Why FlowCommerce?
 
-API Gateway
+FlowCommerce is more than an e-commerce application.
 
-↓
+It is a cloud-native infrastructure simulator built to demonstrate how production systems behave under real-world traffic.
 
-Authentication
+The platform allows developers, DevOps engineers, and recruiters to visualize every request as it flows through a distributed architecture.
 
-↓
+### Features
 
-Catalog
+- 🚀 Interactive Infrastructure Visualizer
+- 📊 Production Traffic Simulation
+- 🔄 Distributed Request Flow
+- ⚡ API Gateway Simulation
+- 🐳 Dockerized Deployment
+- ☁️ AWS Ready
+- 📈 Modern SaaS Landing Page
+- 🎯 Recruiter Friendly Architecture Demo
 
-↓
+---
 
-Cart
+## 🏗 Project Architecture
 
-↓
-
-Order
-
-↓
-
-Payment
-
-↓
-
-Inventory
-
-↓
-
-Shipping
-
-↓
-
-Notification
-
-↓
-
-PostgreSQL
+```text
+               Internet
+                   │
+                   ▼
+          React + TanStack Start
+                   │
+                   ▼
+             API Gateway
+                   │
+    ┌──────────────┼──────────────┐
+    ▼              ▼              ▼
+ Authentication  Catalog        Cart
+       │            │             │
+       └──────┬─────┴─────────────┘
+              ▼
+            Orders
+              │
+    ┌─────────┼─────────┐
+    ▼         ▼         ▼
+ Payment  Inventory  Shipping
+              │
+              ▼
+        Notification
+              │
+              ▼
+         PostgreSQL
 ```
 
-## Tech Stack
+---
 
-### Frontend
+## 📂 Project Structure
 
-- React 19
-- TanStack Start
-- TanStack Router
-- TanStack Query
-- Framer Motion
-- TailwindCSS
-
-### Backend
-
-- Node.js
-- Express
-
-### Database
-
-- PostgreSQL
-
-### Infrastructure
-
-- Docker
-- Docker Compose
-- Nginx
-- AWS EC2
-
-### DevOps
-
-- GitHub Actions
-- CI/CD
-- Docker
-
+```text
 FlowCommerce
+│
+├── Frontend
+│   ├── src
+│   ├── routes
+│   ├── components
+│   └── assets
+│
+├── Backend
+│   ├── server.js
+│   ├── routes
+│   └── controllers
+│
+├── nginx
+│
+├── Dockerfile
+├── docker-compose.yml
+└── README.md
+```
 
-Frontend/
+---
 
-src/
+## 🚀 Installation
 
-components/
-
-routes/
-
-visualizer/
-
-Backend/
-
-server.js
-
-Dockerfile
-
-docker-compose.yml
-
-nginx/
-
-README.md
-
-## Installation
+Clone the repository
 
 ```bash
-git clone https://github.com/yourname/FlowCommerce.git
+git clone https://github.com/Rakeshcrv/FlowCommerce.git
+```
 
+Go to the project
+
+```bash
 cd FlowCommerce
+```
 
+Install dependencies
+
+```bash
 npm install
+```
 
+Run locally
+
+```bash
 npm run dev
 ```
 
-## Run using Docker
+---
+
+## 🐳 Docker Installation
+
+Build the containers
 
 ```bash
-docker compose up --build
+docker compose build
 ```
 
-## Infrastructure Visualizer
+Run the application
 
-The Infrastructure Visualizer is the core feature of FlowCommerce.
+```bash
+docker compose up
+```
 
-It provides a real-time representation of production traffic flowing through a distributed architecture.
+Run in detached mode
 
-Features include:
+```bash
+docker compose up -d
+```
 
-- Live request animation
-- Request tracing
-- Service communication
-- Deployment timeline
-- Infrastructure metrics
-- Service health
-- Production topology
+Stop containers
 
-## DevOps Concepts Demonstrated
+```bash
+docker compose down
+```
 
-- Docker
-- Reverse Proxy
-- Production Deployment
-- Infrastructure Visualization
-- Cloud Native Design
-- Observability
-- Distributed Systems
-- Microservices Architecture
+---
 
-## Roadmap
+## 👨‍💻 Author
 
-- Kubernetes Deployment
-- Helm Charts
-- Prometheus Integration
-- Grafana Dashboards
-- Jaeger Tracing
-- Kafka Event Streaming
-- Redis Caching
-- Terraform Infrastructure
-- AWS ECS Deployment
+### Rakesh Sirvi
 
-## Author
+DevOps Engineer • Cloud & Infrastructure Enthusiast
 
-**Rakesh Sirvi**
+🌐 Portfolio
 
-DevOps Engineer
+https://rakeshsirvi.site
 
-LinkedIn
+💼 LinkedIn
 
-Portfolio
+https://www.linkedin.com/in/rakeshsirvi/
 
-GitHub
+🐙 GitHub
+
+https://github.com/Rakeshcrv
