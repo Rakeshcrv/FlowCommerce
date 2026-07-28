@@ -1,6 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 import { BackgroundFX } from "@/components/BackgroundFX";
@@ -20,18 +19,34 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
 
-  // Show ONLY the intro
-  if (showIntro) {
-    return (
-      <IntroOverlay
-        onFinish={() => setShowIntro(false)}
-      />
-    );
+  useEffect(() => {
+    const seen = window.sessionStorage.getItem("flowops_intro_seen");
+
+    if (!seen) {
+      setShowIntro(true);
+    }
+
+    setLoading(false);
+  }, []);
+
+  const handleIntroFinish = () => {
+    window.sessionStorage.setItem("flowops_intro_seen", "true");
+    setShowIntro(false);
+  };
+
+  // Wait until we're on the client
+  if (loading) {
+    return null;
   }
 
-  // Mount the website AFTER intro
+  // Only render the intro
+  if (showIntro) {
+    return <IntroOverlay onFinish={handleIntroFinish} />;
+  }
+
   return (
     <div className="relative min-h-screen overflow-x-hidden font-sans text-foreground">
       <BackgroundFX />
@@ -39,14 +54,8 @@ function Index() {
       <Nav />
 
       <motion.main
-        initial={{
-          opacity: 0,
-          y: 20,
-        }}
-        animate={{
-          opacity: 1,
-          y: 0,
-        }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           duration: 0.45,
           ease: [0.22, 1, 0.36, 1],
