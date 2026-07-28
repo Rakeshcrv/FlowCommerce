@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  flowcommerce:
+    container_name: flowcommerce
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: flowcommerce:latest
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      NODE_ENV: production
+
+    restart: unless-stopped
+
+    networks:
+      - flowcommerce-network
+
+networks:
+  flowcommerce-network:
+    driver: bridge
