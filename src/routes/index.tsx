@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { BackgroundFX } from "@/components/BackgroundFX";
 import { Hero, Nav } from "@/components/Hero";
 import {
-  DevOpsSection,
+  GitOpsSection,
   Footer,
   PillarsSection,
   SecuritySection,
@@ -67,7 +67,7 @@ function Index() {
 
         <TechStackSection />
 
-        <DevOpsSection />
+        <GitOpsSection />
 
         <SecuritySection />
 

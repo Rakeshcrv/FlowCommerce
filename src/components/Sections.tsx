@@ -189,9 +189,9 @@ const PIPELINE = [
   { icon: Sparkles, label: "Prod live", detail: "trace ok · SLO green" },
 ];
 
-export function DevOpsSection() {
+export function GitOpsSection() {
   return (
-    <section id="devops" className="relative mx-auto max-w-7xl px-6 py-24">
+    <section id="gitOps" className="relative mx-auto max-w-7xl px-6 py-24">
       <SectionHeader
         eyebrow="CI · CD · GitOps"
         title="From `git push` to production in 6 minutes"

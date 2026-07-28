@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Play, Home } from "lucide-react";
+import { ArrowRight, Home, Play } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Sections";
 
@@ -9,53 +10,99 @@ function scrollTo(id: string) {
 }
 
 export function Nav() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    onScroll();
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const items = [
     { l: "Architecture", h: "architecture" },
     { l: "Stack", h: "stack" },
-    { l: "DevOps", h: "devops" },
+    { l: "GitOps", h: "gitOps" },
   ];
+  
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 backdrop-blur-xl" style={{ background: "color-mix(in oklab, var(--background) 70%, transparent)" }}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3.5">
+    <motion.header
+      initial={{ y: -70 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="fixed inset-x-0 top-8 z-50 px-6"
+    >
+      <motion.div
+        animate={{
+          width: scrolled ? "92%" : "100%",
+          y: scrolled ? 0 : 6,
+        }}
+        transition={{
+          duration: 0.3,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        className={`mx-auto flex max-w-7xl items-center justify-between px-6 py-3 transition-all duration-300 ${
+          scrolled
+            ? "rounded-2xl border border-white/10 bg-[#050816]/75 shadow-2xl backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
         <Link to="/" className="transition hover:opacity-90">
           <Logo />
         </Link>
+
         <nav className="hidden items-center gap-1 md:flex">
           <Link
             to="/"
             activeOptions={{ exact: true }}
-            activeProps={{ className: "rounded-full px-3 py-1.5 text-sm text-foreground bg-white/5" }}
-            inactiveProps={{ className: "rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground" }}
+            activeProps={{
+              className:
+                "rounded-full bg-white/10 px-3 py-1.5 text-sm text-foreground",
+            }}
+            inactiveProps={{
+              className:
+                "rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground",
+            }}
           >
-            <span className="inline-flex items-center gap-1.5"><Home className="h-3.5 w-3.5" />Home</span>
+            <span className="inline-flex items-center gap-1.5">
+              <Home className="h-3.5 w-3.5" />
+              Home
+            </span>
           </Link>
-          
-          {items.map((i) => (
+
+          {items.map((item) => (
             <Link
-              key={i.h}
+              key={item.h}
               to="/"
-              hash={i.h}
+              hash={item.h}
               className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
             >
-              {i.l}
+              {item.l}
             </Link>
           ))}
         </nav>
+
         <Link
           to="/visualizer"
-          className="inline-flex items-center gap-1.5 rounded-full bg-[color:var(--cyan)] px-4 py-1.5 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_24px_-4px_var(--cyan)] transition hover:brightness-110"
+          className="inline-flex items-center gap-2 rounded-full bg-[color:var(--cyan)] px-5 py-2 text-sm font-semibold text-[color:var(--primary-foreground)] shadow-[0_0_24px_-4px_var(--cyan)] transition hover:brightness-110"
         >
-          Launch Visualizer <ArrowRight className="h-3.5 w-3.5" />
+          Launch Visualizer
+          <ArrowRight className="h-4 w-4" />
         </Link>
-      </div>
-    </header>
+      </motion.div>
+    </motion.header>
   );
 }
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-7xl gap-14 px-6 pb-16 pt-14 md:pt-24 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:pb-24">
+      <div className="mx-auto grid max-w-7xl gap-14 px-6 pb-16 pt-36 md:pt-40 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:pb-24">
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
