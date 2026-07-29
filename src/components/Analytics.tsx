@@ -27,7 +27,7 @@ export function Analytics() {
               t.src="https://www.clarity.ms/tag/"+i;
               y=l.getElementsByTagName(r)[0];
               y.parentNode.insertBefore(t,y);
-            })(window, document, "clarity", "script", "xtvtttnz1ib");
+            })(window, document, "clarity", "script", "xtvttnz1ib");
           `,
         }}
       />
