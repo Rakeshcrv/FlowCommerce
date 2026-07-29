@@ -8,6 +8,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
+import { Analytics } from "@/components/Analytics";
 
 import appCss from "../styles.css?url";
 
@@ -116,6 +117,7 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <Analytics />
       </head>
       <body>
         {children}
