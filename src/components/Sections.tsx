@@ -338,7 +338,7 @@ export function Footer() {
             { l: "Visualizer", h: "#visualizer" },
             { l: "Architecture", h: "#architecture" },
             { l: "Stack", h: "#stack" },
-            { l: "DevOps", h: "#devops" },
+            { l: "GitOps", h: "#gitOps" },
           ]} />
           <FooterCol title="Resources" items={[
             { l: "Kubernetes", h: "https://kubernetes.io" },
