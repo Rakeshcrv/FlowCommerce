@@ -348,7 +348,7 @@ export function Footer() {
           ]} />
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-muted-foreground md:flex-row">
-          <div>© {new Date().getFullYear()} FlowCommerce AI · e-commerce project</div>
+          <div>© {new Date().getFullYear()} FlowCommerce · E-commerce project</div>
           <div className="font-mono">ap-south-1 · v4.2.0 · cluster healthy</div>
         </div>
       </div>
@@ -382,7 +382,7 @@ export function Logo() {
         </svg>
       </div>
       <div className="leading-tight">
-        <div className="font-display text-sm font-semibold tracking-tight">FlowCommerce<span className="text-[color:var(--cyan)]">.AI</span></div>
+        <div className="font-display text-sm font-semibold tracking-tight">FlowCommerce</div>
         <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">architecture · in motion</div>
       </div>
     </div>
