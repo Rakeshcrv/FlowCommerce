@@ -331,7 +331,7 @@ export function Footer() {
             <Logo />
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               An interactive, cinematic visualizer of a modern cloud-native e-commerce platform.
-              Built as a e-commerce piece for SRE, Platform and DevOps engineers.
+              Built as a E-commerce piece for SRE, Platform and DevOps engineers.
             </p>
           </div>
           <FooterCol title="Explore" items={[
