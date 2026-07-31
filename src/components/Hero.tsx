@@ -27,7 +27,7 @@ export function Nav() {
   const items = [
     { l: "Architecture", h: "architecture" },
     { l: "Stack", h: "stack" },
-    { l: "GitOps", h: "gitOps" },
+    { l: "Gitops", h: "gitOps" },
   ];
   
   return (
