@@ -12,6 +12,8 @@ function scrollTo(id: string) {
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
 
+  const [activeSection, setActiveSection] = useState("home");
+
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -57,34 +59,48 @@ export function Nav() {
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
-          <Link
-            to="/"
-            activeOptions={{ exact: true }}
-            activeProps={{
-              className:
-                "rounded-full bg-white/10 px-3 py-1.5 text-sm text-foreground",
-            }}
-            inactiveProps={{
-              className:
-                "rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground",
-            }}
-          >
-            <span className="inline-flex items-center gap-1.5">
-              <Home className="h-3.5 w-3.5" />
-              Home
-            </span>
-          </Link>
+<Link
+  to="/"
+  onClick={() => {
+  setActiveSection("home");
 
-          {items.map((item) => (
-            <Link
-              key={item.h}
-              to="/"
-              hash={item.h}
-              className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
-            >
-              {item.l}
-            </Link>
-          ))}
+  setTimeout(() => {
+    setActiveSection("");
+  }, 300);
+}}
+  className={`rounded-full px-4 py-2 text-sm transition ${
+    activeSection === "home"
+      ? "bg-white/10 text-white"
+      : "text-muted-foreground hover:bg-white/5 hover:text-white"
+  }`}
+>
+  <span className="inline-flex items-center gap-2">
+    <Home className="h-4 w-4" />
+    Home
+  </span>
+</Link>
+
+{items.map((item) => (
+  <Link
+    key={item.h}
+    to="/"
+    hash={item.h}
+    onClick={() => {
+  setActiveSection(item.h);
+
+  setTimeout(() => {
+    setActiveSection("");
+  }, 300);
+}}
+    className={`rounded-full px-4 py-2 text-sm transition ${
+      activeSection === item.h
+        ? "bg-white/10 text-white"
+        : "text-muted-foreground hover:bg-white/5 hover:text-white"
+    }`}
+  >
+    {item.l}
+  </Link>
+))}
         </nav>
 
         <Link
