@@ -1,4 +1,4 @@
-name:  Deploy Docker to AWS EC2
+name:  Deploy FlowCommerce
 
 on:
   push:
@@ -14,44 +14,28 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy to EC2 via SSH
-        uses: appleboy/ssh-action@v1.2.2
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.2.0
+
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
-          timeout: 60s
-          command_timeout: 30m
+          port: ${{ secrets.EC2_PORT }}
 
           script: |
-            set -e
+            cd /home/ubuntu/FlowCommerce
 
-            echo "========================================"
-            echo " Starting Portfolio Deployment"
-            echo "========================================"
-
-            cd ~/FlowCommerce
-
-            echo ""
-            echo " Current Directory:"
-            pwd
-
-            echo ""
-            echo " Pulling latest code..."
+            echo "Pulling latest code..."
             git pull origin main
 
-            echo ""
-            echo " Installing dependencies..."
+            echo "Stopping old containers..."
             docker compose down
 
-            echo ""
-            echo " Building application..."
+            echo "Building new containers..."
             docker compose up -d --build
 
-            echo ""
-            echo " Waiting for service..."
-            sleep 5
+            echo "Cleaning unused Docker images..."
+            docker image prune -af
 
-            echo ""
-            echo " Deployment Successful!"
-            echo "Website: https://flowcommerce.rakeshsirvi.site"
+            echo "Deployment Complete"
