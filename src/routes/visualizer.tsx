@@ -71,7 +71,7 @@ function nodeById(id: string): ArchNode {
 }
 
 function visualizerPage() {
-  const [scenarioId, setScenarioId] = useState<string>("checkout");
+  const [scenarioId, setScenarioId] = useState<string>("register");
   const scenario = useMemo<Scenario>(
     () => SCENARIOS.find((s) => s.id === scenarioId) ?? SCENARIOS[0],
     [scenarioId],
