@@ -1,4 +1,4 @@
-# 🚀 FlowCommerce.AI
+# 🚀 FlowCommerce
 
 <p align="center">
 
